@@ -95,4 +95,21 @@ app.use((req, res, next) => {
   res.status(500).json({message : 'Something went wrong'});
 });
 
+// 라우트
+app
+.route('/post')
+.get((req, res, next) => {
+res.status(201).send('/GET: /posts');
+}).post((req, res) => {
+  res.status(201).send('/POST: /posts');
+});
+
+app
+.route('/posts/:id').put((req, res) => {
+  res.status(201).send('PUT: /posts/:id');
+})
+.delete((req,res) => {
+  res.status(201).send('DELETE: /posts/:id');
+});
+
 app.listen(8080);
